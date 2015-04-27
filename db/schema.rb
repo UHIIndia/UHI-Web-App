@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20150427104536) do
 
-  create_table "anc_vists", :force => true do |t|
+  create_table "anc_visits", :force => true do |t|
     t.integer  "woman_id"
     t.integer  "month_id",                            :null => false
     t.datetime "asha_visit_date"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20150427104536) do
     t.datetime "updated_at",                          :null => false
   end
 
-  add_index "anc_vists", ["month_id"], :name => "index_anc_vists_on_month_id"
-  add_index "anc_vists", ["woman_id"], :name => "index_anc_vists_on_woman_id"
+  add_index "anc_visits", ["month_id"], :name => "index_anc_visits_on_month_id"
+  add_index "anc_visits", ["woman_id"], :name => "index_anc_visits_on_woman_id"
 
   create_table "children", :force => true do |t|
     t.string   "name",              :null => false

@@ -1,3 +1,4 @@
 class Slum < ActiveRecord::Base
-  # attr_accessible :title, :body
+  belongs_to :city
+  has_many :houses, dependent: :destroy
 end

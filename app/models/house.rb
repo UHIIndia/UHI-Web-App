@@ -1,3 +1,4 @@
 class House < ActiveRecord::Base
-  # attr_accessible :title, :body
+	belongs_to :slum
+	has_many :women, dependent: :destroy
 end

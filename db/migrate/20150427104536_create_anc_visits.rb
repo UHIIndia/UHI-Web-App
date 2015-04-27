@@ -1,6 +1,6 @@
-class CreateAncVists < ActiveRecord::Migration
+class CreateAncVisits < ActiveRecord::Migration
   def change
-    create_table :anc_vists do |t|
+    create_table :anc_visits do |t|
     	t.references :woman
     	t.integer 	:month_id, :null => false
     	t.datetime	:asha_visit_date
@@ -23,13 +23,13 @@ class CreateAncVists < ActiveRecord::Migration
     	t.boolean	:other_infections, :default => false
       	t.timestamps
     end
-    add_index :anc_vists, :month_id
-    add_index :anc_vists, :woman_id
+    add_index :anc_visits, :month_id
+    add_index :anc_visits, :woman_id
   end
 
   def down
-  	drop_index :anc_vists, :month_id
-    drop_index :anc_vists, :woman_id
-  	drop_table :anc_vists
+  	drop_index :anc_visits, :month_id
+    drop_index :anc_visits, :woman_id
+  	drop_table :anc_visits
   end
 end
