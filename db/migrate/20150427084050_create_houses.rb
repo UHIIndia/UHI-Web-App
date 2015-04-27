@@ -6,10 +6,12 @@ class CreateHouses < ActiveRecord::Migration
       	t.timestamps
     end
     add_index :houses, :name
+    add_index :houses, :slum_id
   end
 
   def down
   	drop_index :houses, :name
+  	drop_index :houses, :slum_id
   	drop_table :houses
   end
 end

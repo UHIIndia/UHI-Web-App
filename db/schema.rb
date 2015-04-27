@@ -11,7 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150427101642) do
+ActiveRecord::Schema.define(:version => 20150427104536) do
+
+  create_table "anc_vists", :force => true do |t|
+    t.integer  "woman_id"
+    t.integer  "month_id",                            :null => false
+    t.datetime "asha_visit_date"
+    t.datetime "anm_visit_date"
+    t.integer  "weight"
+    t.integer  "tt"
+    t.integer  "hb"
+    t.boolean  "pale_eye",         :default => false
+    t.boolean  "night_blindness",  :default => false
+    t.boolean  "bleeding",         :default => false
+    t.boolean  "malaria",          :default => false
+    t.integer  "ifa_tablets"
+    t.string   "bp"
+    t.boolean  "urine_protien",    :default => false
+    t.boolean  "swelling",         :default => false
+    t.boolean  "headache",         :default => false
+    t.boolean  "urine_sugar",      :default => false
+    t.boolean  "fever",            :default => false
+    t.boolean  "foul_smelling",    :default => false
+    t.boolean  "other_infections", :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "anc_vists", ["month_id"], :name => "index_anc_vists_on_month_id"
+  add_index "anc_vists", ["woman_id"], :name => "index_anc_vists_on_woman_id"
 
   create_table "children", :force => true do |t|
     t.string   "name",              :null => false
@@ -21,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20150427101642) do
     t.string   "child_id"
     t.string   "sex"
     t.date     "registration_date"
-    t.date     "date_of_birth"
+    t.datetime "date_of_birth"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
@@ -30,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20150427101642) do
   add_index "children", ["father_name"], :name => "index_children_on_father_name"
   add_index "children", ["registration_date"], :name => "index_children_on_registration_date"
   add_index "children", ["sex"], :name => "index_children_on_sex"
+  add_index "children", ["woman_id"], :name => "index_children_on_woman_id"
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -65,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20150427101642) do
   end
 
   add_index "houses", ["name"], :name => "index_houses_on_name"
+  add_index "houses", ["slum_id"], :name => "index_houses_on_slum_id"
 
   create_table "slums", :force => true do |t|
     t.string   "name",       :null => false
@@ -73,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20150427101642) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "slums", ["city_id"], :name => "index_slums_on_city_id"
   add_index "slums", ["name"], :name => "index_slums_on_name"
 
   create_table "women", :force => true do |t|
@@ -97,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20150427101642) do
   end
 
   add_index "women", ["birth_outcome"], :name => "index_women_on_birth_outcome"
+  add_index "women", ["house_id"], :name => "index_women_on_house_id"
   add_index "women", ["maternal_outcome"], :name => "index_women_on_maternal_outcome"
   add_index "women", ["name"], :name => "index_women_on_name"
   add_index "women", ["phone"], :name => "index_women_on_phone"

@@ -8,13 +8,14 @@ class CreateChildren < ActiveRecord::Migration
     	t.string	 :child_id
     	t.string	 :sex
     	t.date		 :registration_date
-    	t.date 		 :date_of_birth
-      	t.timestamps
+    	t.datetime :date_of_birth
+      t.timestamps
     end
     add_index :children, :father_name
     add_index :children, :child_id
     add_index :children, :registration_date
     add_index :children, :sex
+    add_index :children, :woman_id
   end
 
   def down
@@ -22,6 +23,7 @@ class CreateChildren < ActiveRecord::Migration
     drop_index :children, :child_id
     drop_index :children, :registration_date
     drop_index :children, :sex
+    drop_index :children, :woman_id
   	drop_table :children
   end
 end

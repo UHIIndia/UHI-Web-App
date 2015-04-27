@@ -25,6 +25,7 @@ class CreateWomen < ActiveRecord::Migration
     add_index :women, :phone
     add_index :women, :maternal_outcome
     add_index :women, :birth_outcome
+    add_index :women, :house_id
   end
 
   def down
@@ -34,6 +35,7 @@ class CreateWomen < ActiveRecord::Migration
     drop_index :women, :phone
     drop_index :women, :maternal_outcome
     drop_index :women, :birth_outcome
+    drop_index :women, :house_id
   	drop_table :women
   end
 end
